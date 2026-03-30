@@ -23,9 +23,9 @@ const Analytics = () => {
     }
 
     if (tx.type === "income") {
-      acc[date].income += tx.amount;
+      acc[date].income += Number(tx.amount);
     } else {
-      acc[date].expense += tx.amount;
+      acc[date].expense += Number(tx.amount);
     }
 
     return acc;
@@ -37,9 +37,9 @@ const Analytics = () => {
   const totals = transactions.reduce(
     (acc, tx) => {
       if (tx.type === "income") {
-        acc.income += tx.amount;
+        acc.income += Number(tx.amount);
       } else {
-        acc.expense += tx.amount;
+        acc.expense += Number(tx.amount);
       }
       return acc;
     },
@@ -57,13 +57,13 @@ const Analytics = () => {
       <h1 className="text-2xl font-semibold">Analytics</h1>
 
       {/* 📈 Line Chart */}
-      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm">
+      <div className="bg-white p-6 rounded-2xl shadow-sm">
         <h2 className="mb-4 font-semibold">Spending Over Time</h2>
 
-        <LineChart width={500} height={300} data={lineData}>
+        <LineChart width={500} height={300} data={lineData} margin={{ left: 30 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
-          <YAxis />
+          <YAxis width={70} />
           <Tooltip />
           <Line type="monotone" dataKey="income" stroke="#22C55E" />
           <Line type="monotone" dataKey="expense" stroke="#EF4444" />
@@ -71,13 +71,13 @@ const Analytics = () => {
       </div>
 
       {/* 📊 Bar Chart */}
-      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm">
+      <div className="bg-white p-6 rounded-2xl shadow-sm">
         <h2 className="mb-4 font-semibold">Income vs Expense</h2>
 
-        <BarChart width={500} height={300} data={barData}>
+        <BarChart width={500} height={300} data={barData} margin={{ left: 30 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis />
+          <YAxis width={70} />
           <Tooltip />
           <Bar dataKey="value" fill="#22C55E" />
         </BarChart>
