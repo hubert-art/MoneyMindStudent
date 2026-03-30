@@ -26,7 +26,7 @@ export const Navbar = ({ toggleSidebar }) => {
 
         {/* MOBILE LOGO */}
         <img
-          src="../../../public/mind'.png"
+          src="/mind'.png"
           alt="logo"
           className="block md:hidden w-20 h-15 object-contain"
         />

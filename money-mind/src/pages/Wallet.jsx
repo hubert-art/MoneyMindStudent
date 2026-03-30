@@ -36,7 +36,7 @@ const Wallet = () => {
         </p>
       </div>
 
-      {/* ➕ Add Money / Expense */}
+      {/* Add Money / Expense */}
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow">
         <h2 className="mb-4 font-semibold">Update Wallet</h2>
 

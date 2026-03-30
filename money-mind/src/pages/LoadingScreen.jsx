@@ -5,7 +5,7 @@ const LoadingScreen = () => {
       {/* Logo */}
       <div className="text-2xl font-bold">
         <img
-          src="../../public/moneyMind.png"
+          src="/moneyMind.png"
           alt="MoneyMind Logo"
           className="h-50 object-contain"
         />

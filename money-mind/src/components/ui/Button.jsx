@@ -3,7 +3,7 @@ export const Button = ({ children, ...props }) => {
     <button
       {...props}
       className="
-        bg-green-400
+        bg-green-300
         text-[#EFF2F9]
         px-5 py-3
         rounded-[30px]

@@ -42,7 +42,7 @@ export const Sidebar = ({ closeSidebar }) => {
       {/* Logo */}
       <div className="mb-8 flex items-center justify-center">
         <img
-          src="../../../public/mind'.png"
+          src="/mind'.png"
           alt="MoneyMind Logo"
           className="h-30 object-contain"
         />

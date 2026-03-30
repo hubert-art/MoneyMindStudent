@@ -8,7 +8,7 @@ const Transactions = () => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
 
-  // ⚡ FILTER + SEARCH (optimized)
+  // FILTER + SEARCH (optimized)
   const filteredTransactions = useMemo(() => {
     return transactions
       .filter((tx) => {

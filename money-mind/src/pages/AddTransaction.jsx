@@ -9,7 +9,7 @@ const AddTransaction = () => {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("expense");
 
-  // 🎉 SUCCESS MESSAGE STATE
+  // SUCCESS MESSAGE STATE
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
@@ -31,7 +31,7 @@ const AddTransaction = () => {
     setType("expense");
     setCategory("");
 
-    // 🎉 show success message
+    // show success message
     setSuccess(true);
 
     setTimeout(() => {
@@ -46,7 +46,7 @@ const AddTransaction = () => {
         Add Transaction
       </h2>
 
-      {/* 🎉 SUCCESS MESSAGE */}
+      {/* SUCCESS MESSAGE */}
       {success && (
         <div className="mb-4 px-4 py-2 rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-sm">
           Transaction successfully added

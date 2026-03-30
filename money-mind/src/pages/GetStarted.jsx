@@ -13,7 +13,7 @@ const GetStarted = () => {
         <div className="absolute -top-10 left-1/2 -translate-x-1/2">
           <div className=" p-3 rounded-full">
             <img
-              src="../../../public/mind'.png"
+              src="/mind'.png"
               alt="MoneyMind Logo"
               className="h-30 object-contain"
             />

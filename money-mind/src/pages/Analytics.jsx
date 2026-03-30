@@ -179,7 +179,7 @@ const Analytics = () => {
         </div>
       </div>
 
-      {/* 🔥 UPDATED PIE CHART (PREMIUM DONUT STYLE) */}
+      {/* UPDATED PIE CHART (PREMIUM DONUT STYLE) */}
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
 
         <h2 className="mb-4 font-semibold text-gray-800 dark:text-white">

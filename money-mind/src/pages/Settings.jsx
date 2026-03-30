@@ -31,7 +31,7 @@ const Settings = ({ darkMode, setDarkMode }) => {
           Settings
         </h1>
 
-        {/* 👤 ACCOUNT */}
+        {/* ACCOUNT */}
         <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 space-y-4">
 
           <h2 className="text-lg font-semibold text-gray-800 dark:text-white">

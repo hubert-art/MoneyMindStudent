@@ -10,7 +10,7 @@ export const Input = ({ ...props }) => {
         outline-none
         text-sm
         placeholder:text-[rgba(0,0,0,0.45)]
-        focus:ring-2 focus:ring-green-500
+        focus:ring-2 focus:ring-green-400
       "
     />
   );
