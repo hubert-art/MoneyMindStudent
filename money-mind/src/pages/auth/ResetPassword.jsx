@@ -1,14 +1,11 @@
-import { useState, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 
-const Register = () => {
-  const { register } = useContext(AuthContext);
+const ResetPassword = () => {
+  const { token } = useParams(); // 🔐 récupère le token
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,8 +22,13 @@ const Register = () => {
     }
 
     setError("");
-    register({ name, email });
-    navigate("/");
+
+    // 👉 ici tu connecteras ton backend
+    console.log("Token:", token);
+    console.log("New password:", password);
+
+    // redirection après succès
+    navigate("/login");
   };
 
   return (
@@ -40,8 +42,13 @@ const Register = () => {
 
         {/* TITLE */}
         <h1 className="text-2xl font-bold text-center text-gray-700">
-          Create Account
+          Reset Password
         </h1>
+
+        {/* SUBTITLE */}
+        <p className="text-sm text-gray-600 text-center">
+          Enter your new password and confirm it to regain access to your account
+        </p>
 
         {/* ERROR */}
         {error && (
@@ -50,48 +57,16 @@ const Register = () => {
           </p>
         )}
 
-        {/* NAME */}
-        <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700 ml-1">
-            Names
-          </label>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-xl2 px-4 py-3 outline-none"
-            style={{ backgroundColor: "rgba(225, 229, 248, 0.57)" }}
-            required
-          />
-        </div>
-
-        {/* EMAIL */}
-        <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700 ml-1">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-xl2 px-4 py-3 outline-none"
-            style={{ backgroundColor: "rgba(225, 229, 248, 0.57)" }}
-            required
-          />
-        </div>
-
         {/* PASSWORD */}
-        <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700 ml-1">
-            Password
+        <div className="flex flex-col items-start gap-1 w-full">
+          <label className="text-sm font-medium text-gray-700">
+            New Password
           </label>
 
-          <div className="relative">
+          <div className="relative w-full">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
+              placeholder="Enter new password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full rounded-xl2 px-4 py-3 pr-12 outline-none"
@@ -110,15 +85,15 @@ const Register = () => {
         </div>
 
         {/* CONFIRM PASSWORD */}
-        <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium text-gray-700 ml-1">
+        <div className="flex flex-col items-start gap-1 w-full">
+          <label className="text-sm font-medium text-gray-700">
             Confirm Password
           </label>
 
-          <div className="relative">
+          <div className="relative w-full">
             <input
               type={showConfirm ? "text" : "password"}
-              placeholder="Confirm your password"
+              placeholder="Confirm new password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="w-full rounded-xl2 px-4 py-3 pr-12 outline-none"
@@ -141,13 +116,13 @@ const Register = () => {
           type="submit"
           className="bg-primaryGreen text-lightText rounded-xl2 px-4 py-3 w-full"
         >
-          Register
+          Reset Password
         </button>
 
-        {/* LINK */}
+        {/* BACK */}
         <p className="text-sm text-center">
-          Already have an account?{" "}
-          <Link to="/login" className="text-green-400">
+          Back to{" "}
+          <Link to="/login" className="text-green-5=300">
             Login
           </Link>
         </p>
@@ -157,4 +132,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default ResetPassword;

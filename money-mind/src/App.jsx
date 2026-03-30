@@ -1,31 +1,20 @@
-// import { AppRoutes } from "./routes/AppRoutes";
-// import { AuthProvider } from "./context/AuthContext";
-// import { FinanceProvider } from "./context/FinanceContext";
-
-// function App() {
-//   return (
-//     <AuthProvider>
-//       <FinanceProvider>
-//         <AppRoutes />
-//       </FinanceProvider>
-//     </AuthProvider>
-//   );
-// }
-
-// export default App;
-
 import { useState, useEffect } from "react";
 import { AppRoutes } from "./routes/AppRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import { FinanceProvider } from "./context/FinanceContext";
+import LoadingScreen from "./pages/LoadingScreen";
 
 function App() {
-const [darkMode, setDarkMode] = useState(() => {
-  const saved = localStorage.getItem("darkMode");
-  return saved === "true";
-});
+  // 🌙 Dark mode
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("darkMode");
+    return saved === "true";
+  });
 
-  // 🎨 Appliquer le thème au body
+  // ⏳ Loading screen
+  const [loading, setLoading] = useState(true);
+
+  // 🎨 Apply theme
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -35,6 +24,20 @@ const [darkMode, setDarkMode] = useState(() => {
       localStorage.setItem("darkMode", "false");
     }
   }, [darkMode]);
+
+  // ⏱️ Loading delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // 🔄 Show loading first
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <AuthProvider>

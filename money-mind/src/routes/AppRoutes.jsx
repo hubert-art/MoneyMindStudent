@@ -1,89 +1,7 @@
-
-// import { Routes, Route } from "react-router-dom";
-// import { Layout } from "../components/layout/Layout";
-
-// // Pages
-// import Dashboard from "../pages/Dashboard";
-// import AddTransaction from "../pages/AddTransaction";
-// import Login from "../pages/auth/Login";
-// import Register from "../pages/auth/Register";
-
-// // (tu ajouteras les autres plus tard)
-// import Transactions from "../pages/Transactions";
-// import Analytics from "../pages/Analytics";
-// import Wallet from "../pages/Wallet";
-// import Settings from "../pages/Settings";
-
-// export const AppRoutes = () => {
-//   return (
-//     <Routes>
-//       <Route path="/login" element={<Login />} />
-//       <Route path="/register" element={<Register />} />
-//       {/* Dashboard */}
-//       <Route
-//         path="/"
-//         element={
-//           <Layout>
-//             <Dashboard />
-//           </Layout>
-//         }
-//       />
-
-//       {/* Add Transaction */}
-//       <Route
-//         path="/add"
-//         element={
-//           <Layout>
-//             <AddTransaction />
-//           </Layout>
-//         }
-//       />
-
-//       {/* Transactions */}
-//       <Route
-//         path="/transactions"
-//         element={
-//           <Layout>
-//             <Transactions />
-//           </Layout>
-//         }
-//       />
-
-//       {/* Analytics */}
-//       <Route
-//         path="/analytics"
-//         element={
-//           <Layout>
-//             <Analytics />
-//           </Layout>
-//         }
-//       />
-
-//       {/* Wallet */}
-//       <Route
-//         path="/wallet"
-//         element={
-//           <Layout>
-//             <Wallet />
-//           </Layout>
-//         }
-//       />
-
-//       {/* Settings */}
-//       <Route
-//         path="/settings"
-//         element={
-//           <Layout>
-//             <Settings />
-//           </Layout>
-//         }
-//       />
-
-//     </Routes>
-//   );
-// };
-
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 import { Layout } from "../components/layout/Layout";
 import { PrivateRoute } from "./PrivateRoute";
 
@@ -94,22 +12,37 @@ import Transactions from "../pages/Transactions";
 import Analytics from "../pages/Analytics";
 import Wallet from "../pages/Wallet";
 import Settings from "../pages/Settings";
+import GetStarted from "../pages/GetStarted";
 
 // Auth
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import ResetPassword from "../pages/auth/ResetPassword";
 
 export const AppRoutes = ({ darkMode, setDarkMode }) => {
+  const { user } = useContext(AuthContext);
+
   return (
     <Routes>
 
-      {/* 🔐 Auth routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-
-      {/* 🏠 Protected routes */}
+      {/* 🟢 LANDING */}
       <Route
         path="/"
+        element={
+          user ? <Navigate to="/dashboard" /> : <GetStarted />
+        }
+      />
+
+      {/* 🔐 AUTH */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+      {/* 🏠 PROTECTED */}
+      <Route
+        path="/dashboard"
         element={
           <PrivateRoute>
             <Layout>
@@ -163,26 +96,16 @@ export const AppRoutes = ({ darkMode, setDarkMode }) => {
         }
       />
 
-      {/* <Route
+      <Route
         path="/settings"
         element={
-          <PrivateRoute>
-            <Layout>
-              <Settings />
-            </Layout>
-          </PrivateRoute>
+          <Layout>
+            <Settings darkMode={darkMode} setDarkMode={setDarkMode} />
+          </Layout>
         }
-      /> */}
-      <Route
-         path="/settings"
-         element={
-        <Layout>
-          <Settings darkMode={darkMode} setDarkMode={setDarkMode} />
-       </Layout>
-      }
       />
 
-      {/* fallback */}
+      {/* 🔁 fallback */}
       <Route path="*" element={<Navigate to="/" />} />
 
     </Routes>
