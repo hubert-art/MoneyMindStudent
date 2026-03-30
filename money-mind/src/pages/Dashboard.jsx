@@ -5,19 +5,23 @@ import { TransactionsList } from "../components/dashboard/TransactionsList";
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6">
-      
-      {/* Balance */}
-      <BalanceCard />
+    <div className="px-4 sm:px-6 md:px-8">
 
-      {/* Stats */}
-      <StatsSection />
+      <div className="max-w-6xl mx-auto space-y-6">
+        
+        {/* Balance */}
+        <BalanceCard />
 
-      {/* Transactions */}
-      <TransactionsList />
+        {/* Stats */}
+        <StatsSection />
 
-      {/* Pie Chart */}
-      <ExpenseChart />
+        {/* Transactions */}
+        <TransactionsList />
+
+        {/* Pie Chart */}
+        <ExpenseChart />
+
+      </div>
 
     </div>
   );
