@@ -28,7 +28,7 @@ const Wallet = () => {
 
       <h1 className="text-2xl font-semibold">Wallet</h1>
 
-      {/* 💰 Balance Card */}
+      {/* Balance Card */}
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow">
         <h2 className="text-lg">Current Balance</h2>
         <p className="text-3xl font-bold mt-2">

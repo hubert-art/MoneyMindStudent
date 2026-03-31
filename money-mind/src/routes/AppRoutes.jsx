@@ -6,7 +6,7 @@ import { Layout } from "../components/layout/Layout";
 import { PrivateRoute } from "./PrivateRoute";
 
 // Pages
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/Dahsboard";
 import AddTransaction from "../pages/AddTransaction";
 import Transactions from "../pages/Transactions";
 import Analytics from "../pages/Analytics";
@@ -34,13 +34,13 @@ export const AppRoutes = ({ darkMode, setDarkMode }) => {
         }
       />
 
-      {/* 🔐 AUTH */}
+      {/*  AUTH */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-      {/* 🏠 PROTECTED */}
+      {/* PROTECTED */}
       <Route
         path="/dashboard"
         element={
@@ -105,7 +105,7 @@ export const AppRoutes = ({ darkMode, setDarkMode }) => {
         }
       />
 
-      {/* 🔁 fallback */}
+      {/* fallback */}
       <Route path="*" element={<Navigate to="/" />} />
 
     </Routes>

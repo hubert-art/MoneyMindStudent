@@ -5,16 +5,16 @@ import { FinanceProvider } from "./context/FinanceContext";
 import LoadingScreen from "./pages/LoadingScreen";
 
 function App() {
-  // 🌙 Dark mode
+  // Dark mode
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved === "true";
   });
 
-  // ⏳ Loading screen
+  //Loading screen
   const [loading, setLoading] = useState(true);
 
-  // 🎨 Apply theme
+  // Apply theme
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -25,16 +25,16 @@ function App() {
     }
   }, [darkMode]);
 
-  // ⏱️ Loading delay
+  // Loading delay
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // 🔄 Show loading first
+  //  Show loading first
   if (loading) {
     return <LoadingScreen />;
   }

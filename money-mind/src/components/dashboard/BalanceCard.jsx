@@ -7,8 +7,8 @@ export const BalanceCard = () => {
 
   const [showBalance, setShowBalance] = useState(true);
 
-  // 👤 USER DYNAMIQUE (à remplacer selon ton auth system)
-  const userName = localStorage.getItem("userName") || "User";
+  // USER DYNAMIQUE (à remplacer selon ton auth system)
+  const userName = localStorage.getItem("userName");
 
   return (
     <div
