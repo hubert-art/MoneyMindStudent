@@ -25,6 +25,8 @@ const AddTransaction = () => {
 
     addTransaction(newTransaction);
 
+    // 🔥 CHECK NOTIFICATIONS (localStorage)
+    const notifEnabled = JSON.parse(localStorage.getItem("notifications"));
     // reset form
     setTitle("");
     setAmount("");
@@ -32,11 +34,13 @@ const AddTransaction = () => {
     setCategory("");
 
     // show success message
-    setSuccess(true);
+    if (notifEnabled) {
+      setSuccess(true);
 
     setTimeout(() => {
       setSuccess(false);
     }, 2500);
+  }
   };
 
   return (

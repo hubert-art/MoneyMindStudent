@@ -26,11 +26,11 @@ const Wallet = () => {
   return (
     <div className="space-y-6">
 
-      <h1 className="text-2xl font-semibold">Wallet</h1>
+      <h1 className="text-2xl font-semibold text-gray-900">Wallet</h1>
 
       {/* Balance Card */}
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow">
-        <h2 className="text-lg">Current Balance</h2>
+        <h2 className="text-lg text-gray-700">Current Balance</h2>
         <p className="text-3xl font-bold mt-2">
           Kesh {balance.toFixed(2)}
         </p>
@@ -38,7 +38,7 @@ const Wallet = () => {
 
       {/* Add Money / Expense */}
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow">
-        <h2 className="mb-4 font-semibold">Update Wallet</h2>
+        <h2 className="mb-4 font-semibold text-gray-700">Update Wallet</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
